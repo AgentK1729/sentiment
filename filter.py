@@ -6,17 +6,6 @@ patterns = [r'http://([a-zA-z0-9]+/*)+[.][a-zA-z]+', r'[0-9]+([.][0-9]+)*', r'#[
 r'[a-z]+ing', r'[a-z]+ed']
 puctuations = ".,/?!'#$%^&*()@[]{}:;"
 
-def checkExistence (word):  # Check if the word exists in SentiWordNet
-	conn = connect ("/home/tejas/Files/Programming/Django/sentiment/sentiment/wordlist.db")
-	cur = conn.cursor ()
-	query = "select * from directory where word = ?"
-	cur.execute (query, (word,))
-	conn.close ()
-	if cur.rowcount > 0:
-		return True
-	else:
-		return False
-
 def Filter (tweet):
 	tweet = tweet.split (" ")
 	filtered = []
